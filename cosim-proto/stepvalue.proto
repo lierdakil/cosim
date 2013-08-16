@@ -1,0 +1,3 @@
+message StepValue {
+	required double step = 1;
+}

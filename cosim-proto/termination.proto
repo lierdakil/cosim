@@ -1,0 +1,8 @@
+message Termination {
+	enum Type {
+		TERM_EXIT=0; //Connection close OR simulation finished
+		TERM_ERROR=1; //Guest error OR simulation halted
+	}
+	required Type type = 1;
+	optional string message = 2; //If type==TERM_ERROR, should be set
+}

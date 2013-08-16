@@ -1,0 +1,9 @@
+import "termination.proto";
+import "parametervalues.proto";
+import "stepvalue.proto";
+
+message GeneralMessage {
+	optional Termination msg = 1;
+	optional ParameterValues values = 2;
+	optional StepValue step = 3;
+}

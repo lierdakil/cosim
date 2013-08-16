@@ -1,0 +1,6 @@
+import "init.proto";
+
+message ExportParametersRequest {
+	optional double simulationTime = 1 [default=0];
+	repeated ParamImports exports = 2;
+}

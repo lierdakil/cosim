@@ -1,0 +1,3 @@
+message MessageSize {
+    required fixed32 size = 1;
+}

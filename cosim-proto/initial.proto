@@ -1,0 +1,41 @@
+enum LinkType {
+    TCP = 0;
+    SHMEM = 1;
+    FIFO = 2;
+}
+
+message NewConnectionRequest {
+    required uint32 protocolVersion = 1;
+    optional LinkType suggestedLinkType = 2;
+    extensions 100 to max;
+}
+
+message NewConnectionReply {
+    enum Status {
+        OK = 0;
+        ERROR = 1;
+    }
+    required uint32 protocolVersion = 1;
+    required Status result = 2;
+    required LinkType useLinkType = 3;
+    optional TCPConnParams tcpConnParams = 4;
+    optional SHMEMConnParams shmemConnParams = 5;
+    optional FIFOConnParams fifoConnParams = 6;
+    optional string message = 99; //Only meaningful when result=ERROR
+    extensions 100 to max;
+}
+
+message TCPConnParams {
+    required string address = 1;
+    required uint32 port = 2;
+}
+
+message SHMEMConnParams {
+    required string nameHost = 1;
+    required string nameGuest = 2;
+}
+
+message FIFOConnParams {
+    required string nameIn = 1;
+    required string nameOut = 2;
+}

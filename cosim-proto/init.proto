@@ -1,0 +1,21 @@
+message Init {
+        required string name = 1; //Name of instance
+        optional double targetTime = 2; //Target simulation time
+        repeated InstanceImports imports = 3;
+}
+
+message InstanceImports {
+        required string name = 1;
+        repeated ParamImports params = 2;
+}
+
+message ParamImports {
+        required string name = 1;
+        enum ParamType {
+                pt_double = 0;
+                pt_int = 1;
+                pt_float = 2;
+        }
+        optional ParamType type = 2 [default=pt_double];
+        optional int32 length = 3 [default=1];
+}

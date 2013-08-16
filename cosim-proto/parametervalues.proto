@@ -1,0 +1,11 @@
+import "init.proto";
+
+message ParameterValue {
+        optional double doubleValue = 1;
+        optional sint32 intValue = 2;
+        optional float floatValue = 3;
+        optional ParamImports info = 255;
+}
+message ParameterValues {
+        repeated ParameterValue values=1;
+}
