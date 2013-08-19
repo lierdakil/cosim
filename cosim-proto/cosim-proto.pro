@@ -46,7 +46,7 @@ PROTOS += \
 
 OTHER_FILES += $$PROTOS
 
-#LIBS += -lprotobuf -lboost_coroutine -lboost_system -lboost_context -lboost_random
+#LIBS += -lprotobuf -lboost_system -lboost_random
 
 QMAKE_CXXFLAGS += -std=c++11
 

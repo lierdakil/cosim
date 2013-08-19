@@ -6,8 +6,10 @@ QT -= core gui
 
 SOURCES += main.cpp
 
-LIBS += -lprotobuf -lboost_system -lboost_random \
-    -L$$PWD/../cosim-proto -lcosim-proto
+LIBS += -lcosim-proto \
+    -L$$PWD/../cosim-proto
+
+LIBS += -lprotobuf -lboost_system -lboost_random
 
 INCLUDEPATH += ../cosim-proto
 

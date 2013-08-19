@@ -8,8 +8,10 @@ SOURCES += main.cpp \
     initialconnectionhandler.cpp \
     guestlinkhandler.cpp
 
-LIBS += -lprotobuf -lboost_coroutine -lboost_system -lboost_context -lboost_random -lcosim-proto \
-    -L$$PWD/../cosim-proto -lcosim-proto
+LIBS += -lcosim-proto \
+    -L$$PWD/../cosim-proto
+
+LIBS += -lprotobuf -lboost_system -lboost_random
 
 INCLUDEPATH += ../cosim-proto
 
