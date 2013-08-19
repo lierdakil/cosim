@@ -2,7 +2,7 @@
 #define LINKIMPLSHMEM_H
 
 #include "linkimpl.h"
-#include "../cosim-proto/initial.pb.h"
+#include "initial.pb.h"
 #include <boost/interprocess/ipc/message_queue.hpp>
 
 class LinkImplSHMEM : public LinkImpl

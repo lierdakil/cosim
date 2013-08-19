@@ -1,7 +1,7 @@
 #include "cosimconnection.h"
 
 #include <boost/asio.hpp>
-#include "../cosim-proto/messagesize.pb.h"
+#include "messagesize.pb.h"
 
 
 double CosimConnection::getSimulationTime() const

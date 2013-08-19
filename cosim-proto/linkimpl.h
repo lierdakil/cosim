@@ -1,7 +1,7 @@
 #ifndef LINKIMPL_H
 #define LINKIMPL_H
 
-#include "../cosim-proto/initial.pb.h"
+#include "initial.pb.h"
 #include <atomic>
 
 class LinkImpl

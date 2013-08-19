@@ -1,5 +1,5 @@
 #include <iostream>
-#include "cosimconnection.h"
+#include <cosimconnection.h>
 
 using namespace std;
 #include <thread>

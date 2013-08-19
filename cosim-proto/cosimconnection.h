@@ -2,10 +2,10 @@
 #define COSIMCONNECTION_H
 
 #include <string>
-#include "../cosim-server/link.h"
+#include "link.h"
 #include <cassert>
 
-class CosimConnection
+class COSIMPROTOSHARED_EXPORT CosimConnection
 {
 //private:
 public:

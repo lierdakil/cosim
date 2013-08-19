@@ -77,9 +77,9 @@ void Link::sendGeneralMessage(const ParameterValues &msg)
 }
 
 Link::Link(int protocolVersion, LinkType linkType) :
+    abortflag(nullptr),
     protoVer(protocolVersion),
-    linkType(linkType),
-    abortflag(nullptr)
+    linkType(linkType)
 {}
 
 void Link::sendMsg(const google::protobuf::Message &message)

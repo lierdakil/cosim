@@ -7,8 +7,8 @@
 #include <condition_variable>
 #include <memory>
 
-#include "link.h"
-#include "../cosim-proto/messagesize.pb.h"
+#include <link.h>
+#include <messagesize.pb.h>
 
 class InitialConnectionHandler : public std::enable_shared_from_this<InitialConnectionHandler>
 {

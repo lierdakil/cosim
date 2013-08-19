@@ -1,0 +1,5 @@
+*.pb.cc
+*.pb.h
+*.o
+*.so*
+Makefile

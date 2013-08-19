@@ -1,0 +1,12 @@
+#ifndef COSIMPROTO_GLOBAL_H
+#define COSIMPROTO_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(COSIMPROTO_LIBRARY)
+#  define COSIMPROTOSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define COSIMPROTOSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // COSIMPROTO_GLOBAL_H

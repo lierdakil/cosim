@@ -3,19 +3,20 @@
 
 #include <memory>
 #include <stdexcept>
-#include "../cosim-proto/initial.pb.h"
-#include "../cosim-proto/generalmessage.pb.h"
+#include "initial.pb.h"
+#include "generalmessage.pb.h"
 #include <type_traits>
 #include <list>
 #include <iostream>
 #include "linkimpl.h"
 #include <mutex>
-#include "../cosim-proto/init.pb.h"
-#include "../cosim-proto/exportrequest.pb.h"
+#include "init.pb.h"
+#include "exportrequest.pb.h"
+#include "cosim-proto_global.h"
 
 #define COSIM_PROTOVER 1
 
-class Link : public std::enable_shared_from_this<Link>
+class COSIMPROTOSHARED_EXPORT Link : public std::enable_shared_from_this<Link>
 {
 private:
     std::unique_ptr<LinkImpl> linkImpl;
