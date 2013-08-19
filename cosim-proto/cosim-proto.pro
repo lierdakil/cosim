@@ -44,9 +44,8 @@ PROTOS += \
     initial.proto \
     messagesize.proto
 
-OTHER_FILES += $$PROTOS
-
-#LIBS += -lprotobuf -lboost_system -lboost_random
+OTHER_FILES += $$PROTOS \
+    libs.pri
 
 QMAKE_CXXFLAGS += -std=c++11
 
