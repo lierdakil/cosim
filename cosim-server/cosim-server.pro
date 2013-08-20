@@ -17,3 +17,7 @@ QMAKE_CXXFLAGS += -std=c++11
 HEADERS += \
     initialconnectionhandler.h \
     guestlinkhandler.h
+
+target.path=$$PREFIX/bin
+
+INSTALLS+=target

@@ -11,3 +11,7 @@ include(../cosim-proto/libs.pri)
 INCLUDEPATH += ../cosim-proto
 
 QMAKE_CXXFLAGS += -std=c++11
+
+target.path=$$PREFIX/bin
+
+INSTALLS+=target

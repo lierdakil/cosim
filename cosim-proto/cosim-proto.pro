@@ -24,15 +24,9 @@ HEADERS +=\
     linkimpl.h \
     linkimplshmem.h
 
-unix:!symbian {
-    maemo5 {
-        target.path = /opt/usr/lib
-    } else {
-        target.path = /usr/lib
-    }
-    INSTALLS += target
-}
+target.path=$$PREFIX/lib
 
+INSTALLS+=target
 
 PROTOS += \
     generalmessage.proto \
