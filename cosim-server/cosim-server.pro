@@ -1,7 +1,7 @@
 TEMPLATE = app
 CONFIG += console ordered
 CONFIG -= app_bundle
-#CONFIG -= qt
+CONFIG -= qt
 QT -= gui core
 
 SOURCES += main.cpp \

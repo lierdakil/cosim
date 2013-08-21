@@ -42,17 +42,20 @@ int main(int, char *argv[])
 
         double simtime=conn.getSimulationTime();
 
+        //initial values
         x=std::atoi(argv[4]);
         y=1/x;
 
         for(;;) {
             conn.sync(); //incl. initial values
             auto step=conn.step(1); //advance time step=conn.step(step this instance wants)
-            simtime+=step;
+            //do calculation
 //            assert(step==std::min({x,imports[0],imports[1]}));
 //            x=std::rand(); //do calculation
 //            std::cout<<imports[0]<<" "<<imports[1]<<std::endl;
 //            std::cout<<x<<std::endl;
+            //advance solution in time
+            simtime+=step;
             std::this_thread::sleep_for(std::chrono::seconds(1));
         }
     }

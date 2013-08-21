@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       -= core gui
+CONFIG -= qt
 
 TARGET = cosim-proto
 TEMPLATE = lib
