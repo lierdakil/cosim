@@ -55,11 +55,26 @@ public:
         }
     #undef typecase
 
+#ifndef NDEBUG
     #define typecase(type_) \
         case ParamImports_ParamType_pt_ ## type_:\
             for(int i=0; i<length; ++i) \
-                m.add_values()->set_ ## type_ ## value(reinterpret_cast<type_ *>(data)[i]);\
+                { \
+                    auto v=m.add_values(); \
+                    v->set_ ## type_ ## value(reinterpret_cast<type_ *>(data)[i]);\
+                    v->set_allocated_info(infoMessage(i));\
+                } \
             break
+#else
+    #define typecase(type_) \
+        case ParamImports_ParamType_pt_ ## type_:\
+            for(int i=0; i<length; ++i) \
+                { \
+                    auto v=m.add_values(); \
+                    v->set_ ## type_ ## value(reinterpret_cast<type_ *>(data)[i]);\
+                } \
+            break
+#endif
 
         ParameterValues toMessage() const {
             ParameterValues m;
@@ -68,9 +83,6 @@ public:
             typecase(int);
             typecase(float);
             }
-#ifndef NDEBUG
-            m.mutable_values(m.values_size()-1)->set_allocated_info(infoMessage());
-#endif
             return m;
         }
     #undef typecase

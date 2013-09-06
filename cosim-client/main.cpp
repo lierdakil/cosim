@@ -19,23 +19,16 @@ int main(int, char *argv[])
         {
             {argv[2], //instance to export from
                 { // parameters {name,pointer},...
-                    {"x",&imports[0]},
-                    {"z",&imports[1]}
+                    {"x",imports,2},
                 }
             },
-            {argv[3],
-                {
-                    {"y",&imports[2]}
-                }
-            }
         });
-        double x,y;
+        double x[2],y;
 //        conn.registerExport({"x",&x}); //one at a time
 //        conn.registerExport({"y",&y});
 //        conn.checkExports(); //then check them
         conn.registerExports({
-                                 {"x",&x},
-                                 {"y",&y}
+                                 {"x",x,2}
                              }); //or all at once
 
         //init end
@@ -43,8 +36,8 @@ int main(int, char *argv[])
         double simtime=conn.getSimulationTime();
 
         //initial values
-        x=std::atoi(argv[4]);
-        y=1/x;
+        x[0]=100;
+        x[1]=1/x[0];
 
         for(;;) {
             conn.sync(); //incl. initial values

@@ -44,7 +44,9 @@ void GuestLinkHandler::addSubscriber(const std::shared_ptr<GuestLinkHandler> &su
             int j=0;
             for(auto &exprt : epr.exports()) {
                 if(exprt.name()==elem.name()) {
-                    vec.push_back(j);
+                    for(int k=0; k<exprt.length();++k) {
+                        vec.push_back(j+k);
+                    }
                     break;
                 }
                 j+=exprt.length();
