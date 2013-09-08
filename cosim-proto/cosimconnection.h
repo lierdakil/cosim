@@ -62,7 +62,7 @@ public:
                 { \
                     auto v=m.add_values(); \
                     v->set_ ## type_ ## value(reinterpret_cast<type_ *>(data)[i]);\
-                    v->set_allocated_info(infoMessage(i));\
+                    v->set_allocated_info(infoMessage());\
                 } \
             break
 #else
