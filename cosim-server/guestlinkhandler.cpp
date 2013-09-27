@@ -10,6 +10,8 @@ std::atomic<double> GuestLinkHandler::stepEstimate;
 std::list<std::shared_ptr<GuestLinkHandler> > GuestLinkHandler::guestList;
 std::mutex GuestLinkHandler::guestListMutex;
 
+double GuestLinkHandler::targetTime=std::numeric_limits<double>::max();
+
 
 bool GuestLinkHandler::barrierf(bool wakeup) {
     static std::unique_ptr<barrier> barrier_;
@@ -138,6 +140,13 @@ void GuestLinkHandler::handle(std::shared_ptr<Link> link)
                         valuesImported.add_values();
                 }
             }
+            if(initMessage.has_targettime()) {
+                std::lock_guard<decltype(guestListMutex)> lock(guestListMutex);
+                if(guestList.size()==1)
+                    targetTime=initMessage.targettime();
+                else
+                    targetTime=std::min(initMessage.targettime(),targetTime);
+            }
             std::cerr<<"Init msg received"<<std::endl;
             std::cerr<<"Instance "<<instanceName()<<std::endl;
             waitGuestsConnected();
@@ -159,6 +168,7 @@ void GuestLinkHandler::handle(std::shared_ptr<Link> link)
             link->setAbortflag(&abortflag);
             //main loop
             double mysimtime=simtime;
+            allGuestsConnected=false;
             for(;;) {
                 if(barrierf())//exactly one thread returns true
                     stepEstimate.store(NAN);
@@ -191,6 +201,11 @@ void GuestLinkHandler::handle(std::shared_ptr<Link> link)
 
                 mysimtime+=stepEstimate;
                 //exit condition
+                if(mysimtime>=targetTime)
+                {
+                    link->sendErrorMessage(Termination_Type_TERM_EXIT,"Target time reached");
+                    break;
+                }
             }
         } catch (Termination &e) {
             std::cerr<<"Guest "<<instanceName()<<" terminated: "<<

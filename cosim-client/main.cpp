@@ -14,21 +14,22 @@ int main(int, char *argv[])
         conn.open("localhost");
 
         //initialization
-        double imports[3];
+        double a,b;
         conn.init(argv[1],//this instance name
         {
             {argv[2], //instance to export from
                 { // parameters {name,pointer},...
-                    {"x",imports,2},
+                    {"a",&a,1},
+                    {"b",&b,1},
                 }
             },
         });
-        double x[2],y;
+        double c;
 //        conn.registerExport({"x",&x}); //one at a time
 //        conn.registerExport({"y",&y});
 //        conn.checkExports(); //then check them
         conn.registerExports({
-                                 {"x",x,2}
+                                 {"c",&c,1}
                              }); //or all at once
 
         //init end
@@ -36,8 +37,7 @@ int main(int, char *argv[])
         double simtime=conn.getSimulationTime();
 
         //initial values
-        x[0]=100;
-        x[1]=1/x[0];
+        c=0;
 
         for(;;) {
             conn.sync(); //incl. initial values
@@ -45,8 +45,7 @@ int main(int, char *argv[])
             //do calculation
 //            assert(step==std::min({x,imports[0],imports[1]}));
 //            x=std::rand(); //do calculation
-//            std::cout<<imports[0]<<" "<<imports[1]<<std::endl;
-//            std::cout<<x<<std::endl;
+            c=a+b;
             //advance solution in time
             simtime+=step;
             std::this_thread::sleep_for(std::chrono::seconds(1));

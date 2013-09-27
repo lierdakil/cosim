@@ -63,6 +63,7 @@ private://static
 
     static void waitGuestsConnected();
 private:
+    static double targetTime;
     Init initMessage;
 //    ExportParametersRequest epr;
     bool eprLock=false;

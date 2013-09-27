@@ -14,7 +14,7 @@ public:
     double targetTime=NAN;
 
     struct param_t {
-        double length;
+        int length;
         std::string name;
         void* data;
         ParamImports_ParamType type;
@@ -88,7 +88,7 @@ public:
     #undef typecase
 
     #define constructor(type_) \
-        param_t(std::string name, type_ *data, double length=1) \
+        param_t(std::string name, type_ *data, int length=1) \
             : length(length), name(name), data(data), type(ParamImports_ParamType_pt_ ## type_) {}
 
         constructor(double)
