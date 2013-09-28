@@ -14,13 +14,14 @@ int main(int, char *argv[])
         conn.open("localhost");
 
         //initialization
-        double a,b;
+        double a,b,cn;
         conn.init(argv[1],//this instance name
         {
             {argv[2], //instance to export from
                 { // parameters {name,pointer},...
-                    {"a",&a,1},
-                    {"b",&b,1},
+                    {"model_1.a",&a,1},
+                    {"model_1.b",&b,1},
+                    {"model.cnst",&cn,1},
                 }
             },
         });
@@ -41,6 +42,7 @@ int main(int, char *argv[])
 
         for(;;) {
             conn.sync(); //incl. initial values
+            std::cout<<cn<<std::endl;
             auto step=conn.step(1); //advance time step=conn.step(step this instance wants)
             //do calculation
 //            assert(step==std::min({x,imports[0],imports[1]}));
