@@ -168,7 +168,7 @@ void GuestLinkHandler::handle(std::shared_ptr<Link> link)
             link->setAbortflag(&abortflag);
             //main loop
             double mysimtime=simtime;
-            allGuestsConnected=false;
+//            allGuestsConnected=false;
             for(;;) {
                 if(barrierf())//exactly one thread returns true
                     stepEstimate.store(NAN);

@@ -12,6 +12,8 @@ TEMPLATE = lib
 
 DEFINES += COSIMPROTO_LIBRARY
 
+DEFINES += NDEBUG1
+
 SOURCES += \
     cosimconnection.cpp \
     linkimplshmem.cpp \
@@ -26,8 +28,6 @@ HEADERS +=\
     linkimplshmem.h
 
 target.path=$$PREFIX/lib
-
-INSTALLS+=target
 
 PROTOS += \
     generalmessage.proto \
@@ -61,3 +61,8 @@ protobuf_impl.depends = ${QMAKE_FILE_IN_PATH}/${QMAKE_FILE_BASE}.pb.h
 protobuf_impl.commands = $$escape_expand(\n)
 protobuf_impl.variable_out = SOURCES
 QMAKE_EXTRA_COMPILERS += protobuf_impl
+
+include.path=$$PREFIX/include
+include.files+=$$HEADERS *.pb.h
+
+INSTALLS+=target include

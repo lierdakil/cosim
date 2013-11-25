@@ -37,12 +37,12 @@ int main()
 
         std::thread([] {
             std::cout<<"Press enter when all guests are started"<<std::endl;
-            for(;;) {
+//            for(;;) {
                 std::cin.get();
                 GuestLinkHandler::signalGuestsConnected();
                 std::cout<<"OK"<<std::endl;
-                std::this_thread::sleep_for(std::chrono::seconds(5));
-            }
+//                std::this_thread::sleep_for(std::chrono::seconds(5));
+//            }
 //            sighandler(SIGINT);
         }).detach();
 

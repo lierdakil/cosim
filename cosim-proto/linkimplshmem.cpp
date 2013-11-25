@@ -1,5 +1,6 @@
 #include "linkimplshmem.h"
 #include <google/protobuf/io/coded_stream.h>
+#include <iostream>
 
 std::shared_ptr<LinkImplSHMEM::mq_t> LinkImplSHMEM::createshm(std::string &name, std::string suffix)
 {
@@ -24,7 +25,10 @@ std::shared_ptr<LinkImplSHMEM::mq_t> LinkImplSHMEM::createshm(std::string &name,
 void LinkImplSHMEM::sendMsg(const google::protobuf::Message &message)
 {
     auto sz = this->serialize(message);
+#ifndef NDEBUG1
+    std::cerr<<">";
     message.PrintDebugString();
+#endif
     mq_send->send(this->data,sz,0);
 }
 
@@ -57,7 +61,10 @@ void LinkImplSHMEM::recvMsg(google::protobuf::Message &message, std::atomic_bool
         }
         ///@todo: if sizeof(message)==sizeof(data)/int, there could be additional read?
     }
+#ifndef NDEBUG1
+    std::cerr<<"<";
     message.PrintDebugString();
+#endif
     if(!message.IsInitialized())
         throw std::runtime_error(message.DebugString());
 }
