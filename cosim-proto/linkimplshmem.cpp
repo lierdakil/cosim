@@ -59,7 +59,6 @@ void LinkImplSHMEM::recvMsg(google::protobuf::Message &message, std::atomic_bool
             if(abortflag&&*abortflag)
                 throw std::runtime_error("termination requested by user");
         }
-        ///@todo: if sizeof(message)==sizeof(data)/int, there could be additional read?
     }
 #ifndef NDEBUG1
     std::cerr<<"<";
