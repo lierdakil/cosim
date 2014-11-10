@@ -62,7 +62,7 @@ protobuf_impl.commands = $$escape_expand(\n)
 protobuf_impl.variable_out = SOURCES
 QMAKE_EXTRA_COMPILERS += protobuf_impl
 
-include.path=$$PREFIX/include
+include.path=$$PREFIX/include/cosim
 include.files+=$$HEADERS *.pb.h
 
 INSTALLS+=target include
