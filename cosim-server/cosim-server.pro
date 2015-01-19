@@ -12,7 +12,7 @@ include(../cosim-proto/libs.pri)
 
 INCLUDEPATH += ../cosim-proto
 
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++11 -Werror
 
 HEADERS += \
     initialconnectionhandler.h \

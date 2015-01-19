@@ -42,7 +42,7 @@ PROTOS += \
 OTHER_FILES += $$PROTOS \
     libs.pri
 
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++11 -Werror
 
 message("Generating protocol buffer classes from .proto files.")
 
